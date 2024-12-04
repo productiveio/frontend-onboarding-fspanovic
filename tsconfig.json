@@ -1,0 +1,60 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "compilerOptions": {
+    "noPropertyAccessFromIndexSignature": false,
+
+    // The combination of `baseUrl` with `paths` allows Ember's classic package
+    // layout, which is not resolvable with the Node resolution algorithm, to
+    // work with TypeScript.
+    "baseUrl": ".",
+    "paths": {
+      "frontend-onboarding-template/tests/*": [
+        "tests/*"
+      ],
+      "frontend-onboarding-template/*": [
+        "app/*"
+      ],
+      "*": [
+        "types/*"
+      ]
+    }
+  },
+  "glint": {
+    "environment": {
+      "ember-loose": {
+        "additionalSpecialForms": {
+          "globals": {
+            "eq": "===",
+            "not-eq": "!==",
+            "and": "&&",
+            "or": "||",
+            "not": "!"
+          }
+        }
+      },
+      "ember-template-imports": {
+        "additionalSpecialForms": {
+          "imports": {
+            "ember-truth-helpers/helpers/eq": { "default": "===" },
+            "ember-truth-helpers/helpers/not-eq": { "default": "!==" },
+            "ember-truth-helpers/helpers/and": { "default": "&&" },
+            "ember-truth-helpers/helpers/or": { "default": "||" },
+            "ember-truth-helpers/helpers/not": { "default": "!" },
+            "ember-truth-helpers": {
+              "eq": "===",
+              "notEq": "!==",
+              "and": "&&",
+              "or": "||",
+              "not": "!"
+            }
+          }
+        }
+      }
+    }
+  },
+  "include": [
+    "app/**/*",
+    "tests/**/*",
+    "types/**/*"
+  ]
+}

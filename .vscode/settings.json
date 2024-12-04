@@ -1,0 +1,9 @@
+{
+  "npm.packageManager": "yarn",
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "[handlebars]": {
+    "files.insertFinalNewline": false
+  }
+}

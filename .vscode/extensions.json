@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "lifeart.vscode-glimmer-syntax",
+    "lifeart.vscode-ember-unstable",
+    "josa.ember-related-files",
+    "esbenp.prettier-vscode",
+    "phanitejakomaravolu.emberes6snippets"
+  ]
+}
