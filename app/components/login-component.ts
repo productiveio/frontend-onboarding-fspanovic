@@ -26,9 +26,13 @@ export default class LoginComponent extends Component {
     e.preventDefault();
     try{
       const session = this.store.createRecord("session", {email:this.email, password:this.password});
-      session.save();
-      this.router.transitionTo("/")
-
+      session.save().then((res:any)=>{
+        localStorage.setItem("token", res?.token) 
+        this.router.transitionTo("/");
+  
+      }).catch((e:any)=>{
+        console.log(e)
+      });
     }catch(e){
       console.log(e)
     }

@@ -3,14 +3,16 @@ import Service, { inject } from '@ember/service';
 import type RouterService from '@ember/routing/router-service';
 
 export default class SessionService extends Service {
-  @tracked currentUser = null;
-  @tracked isAuthenticated = false;
-  @tracked token = null;
   @inject('router') declare router:RouterService;
 
-  get isLoggedin(){
-    return this.isAuthenticated
+  get token(){
+    return localStorage.getItem("token")
   }
+
+  get isAuthenticated(){
+   return !!localStorage.getItem("token")
+  }
+  
 }
 
 // Don't remove this declaration: this is what enables TypeScript to resolve
