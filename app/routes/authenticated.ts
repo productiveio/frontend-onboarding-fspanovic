@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
-import type Transition from '@ember/routing/transition';
 import { inject, service } from '@ember/service';
+
+import type Transition from '@ember/routing/transition';
 
 export default class AuthenticatedRoute extends Route {
     @inject('router') router;

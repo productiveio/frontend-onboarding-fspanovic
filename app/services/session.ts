@@ -1,5 +1,5 @@
-import Service, { inject } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import Service, { inject } from '@ember/service';
 
 export default class SessionService extends Service {
   @tracked currentUser = null;
@@ -20,15 +20,12 @@ export default class SessionService extends Service {
         "Accept": "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5",
         "Content-Type": "application/vnd.api+json",
       },
-      
-
       body: JSON.stringify({ data: {
-
         type: "sessions",
         attributes:{
           email,
-          password
-        }
+          password,
+        },
       }  }),
     });
 
