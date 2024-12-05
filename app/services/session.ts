@@ -16,7 +16,14 @@ export default class SessionService extends Service {
    
     const response = await fetch('https://api-staging.productive.io/api/v2/sessions', {
       method: 'POST',
+      headers: {
+        "Accept": "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5",
+        "Content-Type": "application/vnd.api+json",
+      },
+      
+
       body: JSON.stringify({ data: {
+
         type: "sessions",
         attributes:{
           email,
