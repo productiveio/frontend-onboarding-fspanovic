@@ -4,8 +4,10 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject, service } from '@ember/service';
+
 import type RouterService from '@ember/routing/router-service';
 import type StoreService from '@ember-data/store'
+import type SessionModel from 'frontend-onboarding-template/models/session';
 import type SessionService from 'frontend-onboarding-template/services/session';
 
 export default class LoginComponent extends Component {
@@ -26,19 +28,14 @@ export default class LoginComponent extends Component {
   submitLogin(e:SubmitEvent){
     e.preventDefault();
 
-    try{
-      const session = this.store.createRecord("session", {email:this.email, password:this.password});
+    const session = this.store.createRecord("session", {email:this.email, password:this.password});
 
-      session.save().then((res:any)=>{
-        localStorage.setItem("token", res?.token) 
-        this.router.transitionTo("/");
-      }).catch((e:any)=>{
-        alert("Something went wrong");
-        console.log(e)
-      });
-    }catch(e){
-      console.log(e)
-    }
+    session.save().then((res:SessionModel)=>{
+      localStorage.setItem("token", res?.token as string) 
+      this.router.transitionTo("/");
+    }).catch(()=>{
+      alert("Something went wrong");
+    });
   }
  
 }
