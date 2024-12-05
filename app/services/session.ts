@@ -1,11 +1,12 @@
 import { tracked } from '@glimmer/tracking';
 import Service, { inject } from '@ember/service';
+import type RouterService from '@ember/routing/router-service';
 
 export default class SessionService extends Service {
   @tracked currentUser = null;
   @tracked isAuthenticated = false;
   @tracked token = null;
-  @inject('router') router;
+  @inject('router') declare router:RouterService;
 
   get isLoggedin(){
     return this.isAuthenticated
