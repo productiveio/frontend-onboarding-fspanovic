@@ -30,6 +30,7 @@ export default class LoginComponent extends Component {
         localStorage.setItem("token", res?.token) 
         this.router.transitionTo("/");
       }).catch((e:any)=>{
+        alert("Something went wrong");
         console.log(e)
       });
     }catch(e){

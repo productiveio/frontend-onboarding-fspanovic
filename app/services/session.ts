@@ -1,4 +1,3 @@
-import { tracked } from '@glimmer/tracking';
 import Service, { inject } from '@ember/service';
 import type RouterService from '@ember/routing/router-service';
 
@@ -17,7 +16,6 @@ export default class SessionService extends Service {
     localStorage.removeItem("token");
     this.router.transitionTo("/login")
   }
-  
 }
 
 // Don't remove this declaration: this is what enables TypeScript to resolve
