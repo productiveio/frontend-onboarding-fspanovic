@@ -9,7 +9,7 @@ export default class SessionService extends Service {
     return localStorage.getItem("token")
   }
 
-  get isAuthenticated(){
+   isAuthenticated(){
    return !!localStorage.getItem("token")
   }
   

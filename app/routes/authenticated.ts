@@ -10,7 +10,7 @@ export default class AuthenticatedRoute extends Route {
     @service declare session:SessionService;
 
     beforeModel(transition: Transition): Promise<unknown> | void {
-        if(!this.session.isAuthenticated){
+        if(!this.session.isAuthenticated()){
             this.router.transitionTo("/login")
         }
     }
