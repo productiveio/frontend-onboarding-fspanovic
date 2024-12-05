@@ -1,4 +1,5 @@
 import Service, { inject } from '@ember/service';
+
 import type RouterService from '@ember/routing/router-service';
 
 export default class SessionService extends Service {
