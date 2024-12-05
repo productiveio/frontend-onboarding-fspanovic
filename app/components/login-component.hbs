@@ -7,6 +7,7 @@
         id="email"
         type="text"
         value={{this.email}}
+        {{on "input"  this.onInputChange}}
         required
       />
     </div>
@@ -16,6 +17,7 @@
         id="password"
         type="password"
         required
+        {{on "input"  this.onInputChange }}
         value={{this.password}}
       />
     </div>
