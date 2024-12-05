@@ -3,6 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 
+import './login-component.scss'
+
 export default class LoginComponent extends Component {
   @service session;
   @tracked email= "";
