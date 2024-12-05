@@ -12,6 +12,11 @@ export default class SessionService extends Service {
    isAuthenticated(){
    return !!localStorage.getItem("token")
   }
+
+  logout(){
+    localStorage.removeItem("token");
+    this.router.transitionTo("/login")
+  }
   
 }
 

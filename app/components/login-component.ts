@@ -29,7 +29,6 @@ export default class LoginComponent extends Component {
       session.save().then((res:any)=>{
         localStorage.setItem("token", res?.token) 
         this.router.transitionTo("/");
-  
       }).catch((e:any)=>{
         console.log(e)
       });
