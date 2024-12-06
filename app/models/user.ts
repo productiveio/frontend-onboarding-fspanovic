@@ -1,4 +1,7 @@
-import Model, {attr, belongsTo,hasMany} from '@ember-data/model';
+import Model, {attr,hasMany, type SyncHasMany} from '@ember-data/model';
+
+import type OrganizationMembershipModel from './organization-membership';
+import type SessionModel from './session';
 
 
 export default class UserModel extends Model {
@@ -6,5 +9,7 @@ export default class UserModel extends Model {
   @attr("string") lastName?: string;
   @attr("string") email?: string;
 
-  @hasMany("session", {async: false, inverse: null}) sessions:any;
+  @hasMany("session", {async: false, inverse: null}) sessions?:SessionModel;
+  @hasMany('organization-membership', {async: false, inverse: 'user'}) organizationMemberships?: SyncHasMany<OrganizationMembershipModel>;
+
 }
