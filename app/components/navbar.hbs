@@ -23,8 +23,9 @@
         >
           Home
         </LinkTo>
-
-        <a class="nav-link" href="#">Add links to routes here</a>
+        <button {{on "click" this.handleLogout}} class="logout-btn" type="button"> 
+          Logout
+        </button>
         {{! Use the template below for links }}
         {{! <LinkTo class="nav-link" @route="your.route">Your route</LinkTo> }}
       </div>

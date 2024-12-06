@@ -1,20 +1,19 @@
 import Component from '@glimmer/component';
-
 import styles from './navbar.module.scss';
+import { service } from '@ember/service';
+import type SessionService from 'frontend-onboarding-template/services/session';
 
-export interface INavbarSignature {
-  Element: HTMLElement;
-  Args: {};
-  Blocks: {
-    default: [];
-  };
-}
+export default class NavbarComponent extends Component {
+  @service declare session:SessionService;
 
-export default class NavbarComponent extends Component<INavbarSignature> {
   styles = styles;
 
   get isRed() {
     return true;
+  }
+
+  handleLogout = () =>{
+    this.session.logout()
   }
 }
 
