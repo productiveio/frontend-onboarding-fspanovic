@@ -25,17 +25,18 @@ export default class LoginComponent extends Component {
   }
 
   @action
-  submitLogin(e:SubmitEvent){
+  async submitLogin(e:SubmitEvent){
     e.preventDefault();
 
-    const session = this.store.createRecord("session", {email:this.email, password:this.password});
+      try{
+        const session = await this.store.createRecord("session", {email:this.email, password:this.password});
+        const response:SessionModel = await session.save()
 
-    session.save().then((res:SessionModel)=>{
-      localStorage.setItem("token", res?.token as string) 
-      this.router.transitionTo("/");
-    }).catch(()=>{
-      alert("Something went wrong");
-    });
+        localStorage.setItem("token", response?.token as string)
+        this.router.transitionTo("/");
+      }catch(e){
+        alert("Something went wrong");
+      }
   }
  
 }
