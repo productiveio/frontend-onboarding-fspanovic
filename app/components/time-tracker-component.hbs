@@ -1,16 +1,42 @@
-<div>
-  <label for="date-picker">Pick a Date:</label>
-  <input 
-    type="date" 
-    id="date-picker"
-    value={{this.selectedDate}} 
-    {{on "input"  this.setSelectedDate}} />
+<div class="form-container">
+  <form class="form" >
+    <div class="form-group">
+      <label for="date-picker">Pick a Date:</label>
+      <input 
+        type="date" 
+        id="date-picker"
+        value={{this.selectedDate}} 
+        {{on "input"  this.setSelectedDate}} />
+    </div>
 
-  <label for="service-dropdown" class="form-label">Choose an Option:</label>
-  <select id="service-dropdown">
-  {{#each @services as |service|}}
-    <option value={{service.orderId}}>{{service.name}}</option>
-  {{/each}}
-</select>
+    <div class="form-group">
+      <label for="service-dropdown" class="form-label">Choose an Option:</label>
+      <select id="service-dropdown">
+        {{#each @services as |service|}}
+          <option value={{service.orderId}}>{{service.name}}</option>
+        {{/each}}
+      </select>
+    </div>
 
+    <div class="form-group">
+      <label for="time">Time:</label>
+      <input 
+        id="time"
+        type="number"
+        value={{this.time}} 
+        {{on "input"  this.setTime}} />
+    </div>
+
+    <div class="form-group">
+      <label for="note">Note:</label>
+      <input 
+        id="note"
+        value={{this.note}} 
+        {{on "input"  this.setNote}} />
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="submit-button">Submit</button>
+    </div>
+  </form>
 </div>
