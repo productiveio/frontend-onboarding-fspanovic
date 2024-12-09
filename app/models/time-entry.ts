@@ -25,6 +25,4 @@ export default class TimeEntryModel extends Model {
 
 
   @belongsTo('organization-membership', {async: false, inverse: null}) organizationMembership?: OrganizationMembershipModel;
-
-
 }
