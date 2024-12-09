@@ -7,7 +7,7 @@ export default class AuthenticatedTimeTrackerRoute extends Route {
     @inject("store") declare store: StoreService;
 
     model(){
-        return this.store.findAll("time-entry");
+        return this.store.findAll("service");
     }
     
 }

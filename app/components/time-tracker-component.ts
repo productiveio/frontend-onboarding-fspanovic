@@ -9,7 +9,7 @@ export default class TimeTrackerComponent extends Component {
     const currentValue = target.value;
     // const [year, month, day] = currentValue.split("-"); 
     // const formattedDate = `${day}-${month}-${year}`;
-    
+
     this.selectedDate = currentValue;
   }
 

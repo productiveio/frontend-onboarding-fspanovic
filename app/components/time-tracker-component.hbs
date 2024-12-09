@@ -6,5 +6,11 @@
     value={{this.selectedDate}} 
     {{on "input"  this.setSelectedDate}} />
 
+  <label for="service-dropdown" class="form-label">Choose an Option:</label>
+  <select id="service-dropdown">
+  {{#each @services as |service|}}
+    <option value={{service.orderId}}>{{service.name}}</option>
+  {{/each}}
+</select>
 
 </div>
