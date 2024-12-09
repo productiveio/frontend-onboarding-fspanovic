@@ -10,15 +10,14 @@ export default class ApplicationRoute extends Route {
 
     model() {
       return  this.store.findAll("organization-membership");
-
     }
 
     setupController(controller, model, transition) {
         super.setupController(controller, model, transition);
         
-        const user = model[0]?.user
+        const user = model[0]?.user;
 
-        this.session.setUser(user)
+        this.session.setUser(user);
       }
     
 }

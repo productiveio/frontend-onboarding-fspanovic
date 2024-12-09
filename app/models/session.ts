@@ -1,4 +1,5 @@
 import Model, {attr, belongsTo} from '@ember-data/model';
+
 import type UserModel from './user';
 
 
