@@ -1,0 +1,10 @@
+<div>
+  <label for="date-picker">Pick a Date:</label>
+  <input 
+    type="date" 
+    id="date-picker"
+    value={{this.selectedDate}} 
+    {{on "input"  this.setSelectedDate}} />
+
+
+</div>
