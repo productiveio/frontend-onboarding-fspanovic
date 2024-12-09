@@ -24,7 +24,6 @@ export default class SessionService extends Service {
   setUser(user:UserModel){
     this.user = user
   }
-
 }
 
 // Don't remove this declaration: this is what enables TypeScript to resolve

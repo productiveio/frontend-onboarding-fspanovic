@@ -15,7 +15,7 @@ export default class ApplicationRoute extends Route {
 
     setupController(controller, model, transition) {
         super.setupController(controller, model, transition);
-
+        
         const user = model[0]?.user
 
         this.session.setUser(user)
