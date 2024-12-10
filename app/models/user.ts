@@ -14,5 +14,4 @@ export default class UserModel extends Model {
 
   @hasMany("session", {async: false, inverse: null}) sessions?:SessionModel;
   @hasMany('organization-membership', {async: false, inverse: 'user'}) organizationMemberships?: SyncHasMany<OrganizationMembershipModel>;
-
 }
