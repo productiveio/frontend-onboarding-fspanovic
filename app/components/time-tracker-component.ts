@@ -12,16 +12,26 @@ export default class TimeTrackerComponent extends Component {
   @tracked time = "";
   @tracked note = "";
   @tracked selectedService = "";
+  @tracked timeEntries:any = [];
 
   @service declare session:SessionService;
 
   @inject("store") declare store:StoreService;
 
-  setSelectedDate = (e:Event) =>{
+  
+  setSelectedDate = async(e:Event) =>{
     const target = e.target as HTMLSelectElement;
-    const currentValue = target.value;
+    const date = target.value;
 
-    this.selectedDate = currentValue;
+    this.selectedDate = date;
+
+    try{
+      const timeEntries = await this.store.query("time-entry", {filter:{before: this.selectedDate, after: this.selectedDate}, personId: "13532"});
+      
+      this.timeEntries = timeEntries;
+    }catch(e){
+      alert("Something went wrong...")
+    }
   }
 
   setTime = (e:Event) =>{
