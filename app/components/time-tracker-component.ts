@@ -29,9 +29,8 @@ export default class TimeTrackerComponent extends Component {
 
   setTimeEntries = async() =>{
     try{
-      const timeEntries = await this.store.query("time-entry", {filter:{before: this.selectedDate, after: this.selectedDate}, personId: "13532"});
+      const timeEntries = await this.store.query("time-entry", {filter:{before: this.selectedDate, after: this.selectedDate}, personId: this.session.person?.id});
 
-      alert("Time entry added.");
       this.timeEntries = timeEntries;
     }catch(e){
       alert("Something went wrong...")
@@ -84,17 +83,22 @@ export default class TimeTrackerComponent extends Component {
     const [year, month, day] = this.selectedDate.split("-"); 
     const formattedDate = `${year}-${month}-${day}`;
 
+    const personId = this.session.person?.id;
+
+    if(!personId)return
+
     try{
       let timeEntry = this.store.createRecord('time-entry', {
         note: this.note,
         date: formattedDate,
         time: this.time,
-        person: this.store.peekRecord('person', '13532'), 
+        person: this.store.peekRecord('person', personId), 
         service: this.store.peekRecord('service', this.selectedService), 
       });  
 
       await timeEntry.save();
       this.resetFormFields();
+      alert("Time entry added.");
       await this.setTimeEntries()
     }catch(e){
       alert("something went wrong");

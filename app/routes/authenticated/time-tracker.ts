@@ -9,5 +9,4 @@ export default class AuthenticatedTimeTrackerRoute extends Route {
     model(){
         return this.store.findAll("service");
     }
-    
 }

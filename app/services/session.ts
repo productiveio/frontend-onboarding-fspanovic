@@ -2,11 +2,13 @@ import { tracked } from '@glimmer/tracking';
 import Service, { inject } from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
+import type PersonModel from 'frontend-onboarding-template/models/person';
 import type UserModel from 'frontend-onboarding-template/models/user';
 
 export default class SessionService extends Service {
   @inject('router') declare router:RouterService;
   @tracked user:UserModel | null  = null;
+  @tracked person: PersonModel | null = null;
  
   get token(){
     return localStorage.getItem("token")
@@ -21,9 +23,6 @@ export default class SessionService extends Service {
     this.router.transitionTo("/login")
   }
 
-  setUser(user:UserModel){
-    this.user = user
-  }
 }
 
 // Don't remove this declaration: this is what enables TypeScript to resolve
