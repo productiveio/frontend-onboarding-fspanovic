@@ -1,19 +1,20 @@
 <div class="form-container">
-  <form class="form" >
+  <form class="form" {{on "submit" this.submitTimeTracking}} >
     <div class="form-group">
       <label for="date-picker">Pick a Date:</label>
       <input 
         type="date" 
         id="date-picker"
         value={{this.selectedDate}} 
-        {{on "input"  this.setSelectedDate}} />
+        {{on "input"  this.setSelectedDate}} 
+      />
     </div>
-
+    {{#if this.selectedDate}}
     <div class="form-group">
       <label for="service-dropdown" class="form-label">Choose an Option:</label>
-      <select id="service-dropdown">
+      <select id="service-dropdown" {{on "change" this.setSelectedService}} value={{this.selectedService}}>
         {{#each @services as |service|}}
-          <option value={{service.orderId}}>{{service.name}}</option>
+          <option value={{service.initialServiceId}}>{{service.name}}</option>
         {{/each}}
       </select>
     </div>
@@ -23,6 +24,7 @@
       <input 
         id="time"
         type="number"
+        required
         value={{this.time}} 
         {{on "input"  this.setTime}} />
     </div>
@@ -32,11 +34,15 @@
       <input 
         id="note"
         value={{this.note}} 
+        required
         {{on "input"  this.setNote}} />
     </div>
 
     <div class="form-group">
       <button type="submit" class="submit-button">Submit</button>
     </div>
+    {{/if}}
+
+ 
   </form>
 </div>

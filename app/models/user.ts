@@ -8,7 +8,9 @@ export default class UserModel extends Model {
   @attr('string') firstName?: string;
   @attr("string") lastName?: string;
   @attr("string") email?: string;
-  @attr("number") defaultOrganizationId?: string;
+  
+
+  @attr("number") defaultOrganizationId?: number;
 
   @hasMany("session", {async: false, inverse: null}) sessions?:SessionModel;
   @hasMany('organization-membership', {async: false, inverse: 'user'}) organizationMemberships?: SyncHasMany<OrganizationMembershipModel>;

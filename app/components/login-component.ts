@@ -14,6 +14,7 @@ export default class LoginComponent extends Component {
   @service declare session:SessionService;
   @tracked email= "";
   @tracked password= "";
+  
   @inject("store") declare store:StoreService;
   @inject('router') declare router:RouterService;
 
