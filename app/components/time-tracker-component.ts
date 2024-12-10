@@ -19,15 +19,19 @@ export default class TimeTrackerComponent extends Component {
   @inject("store") declare store:StoreService;
 
   
-  setSelectedDate = async(e:Event) =>{
+  setSelectedDate = (e:Event) =>{
     const target = e.target as HTMLSelectElement;
     const date = target.value;
 
     this.selectedDate = date;
+    this.setTimeEntries()
+  }
 
+  setTimeEntries = async() =>{
     try{
       const timeEntries = await this.store.query("time-entry", {filter:{before: this.selectedDate, after: this.selectedDate}, personId: "13532"});
-      
+
+      alert("Time entry added.");
       this.timeEntries = timeEntries;
     }catch(e){
       alert("Something went wrong...")
@@ -91,7 +95,7 @@ export default class TimeTrackerComponent extends Component {
 
       await timeEntry.save();
       this.resetFormFields();
-      alert("Time entry added.");
+      await this.setTimeEntries()
     }catch(e){
       alert("something went wrong");
     }
