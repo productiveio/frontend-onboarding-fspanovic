@@ -42,6 +42,12 @@ export default class TimeTrackerComponent extends Component {
     const currentValue = target.value;
 
     this.selectedService = currentValue;
+  };
+
+  resetFormFields = () =>{
+    this.time = "";
+    this.note = "";
+    this.selectedService = "";
   }
 
   submitTimeTracking = async(e:SubmitEvent) =>{
@@ -59,10 +65,11 @@ export default class TimeTrackerComponent extends Component {
         service: this.store.peekRecord('service', this.selectedService), 
       });  
 
-      timeEntry.save();
-      alert("Time entry added.")
+      await timeEntry.save();
+      this.resetFormFields();
+      alert("Time entry added.");
     }catch(e){
-      alert("something went wrong")
+      alert("something went wrong");
     }
   }
 }
