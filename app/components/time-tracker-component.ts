@@ -12,6 +12,7 @@ export default class TimeTrackerComponent extends Component {
   @tracked time = "";
   @tracked note = "";
   @tracked selectedService = "";
+  @tracked isLoading = false;
   @tracked timeEntries:any = [];
 
   @service declare session:SessionService;
@@ -66,6 +67,8 @@ export default class TimeTrackerComponent extends Component {
 
   deleteEntry = async(e: MouseEvent) =>{
     const target = e.target as HTMLElement;
+    
+    this.isLoading = true;
 
     try{
       const timeEntry:any =  await this.store.findRecord('time-entry', target.id, { reload: true });
@@ -73,6 +76,8 @@ export default class TimeTrackerComponent extends Component {
       timeEntry.destroyRecord() 
     }catch(e){
       alert("Something went wrong...")
+    }finally{
+      this.isLoading = false;
     }
   }
 
@@ -85,6 +90,8 @@ export default class TimeTrackerComponent extends Component {
     const personId = this.session.person?.id;
 
     if(!personId)return
+
+    this.isLoading = true;
 
     try{
       let timeEntry = this.store.createRecord('time-entry', {
@@ -101,6 +108,8 @@ export default class TimeTrackerComponent extends Component {
       await this.setTimeEntries()
     }catch(e){
       alert("something went wrong");
+    }finally{
+      this.isLoading = false;
     }
   }
 }

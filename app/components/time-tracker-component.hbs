@@ -1,4 +1,8 @@
 <div class="time-tracker-container">
+  {{#if this.isLoading}}
+  <Utils::Loader/>
+  {{/if}}
+
   <TimeEntry::TimeEntryFormComponent
     @submitTimeTracking={{this.submitTimeTracking}}
     @selectedDate={{this.selectedDate}}
