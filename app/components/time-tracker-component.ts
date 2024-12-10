@@ -74,7 +74,6 @@ export default class TimeTrackerComponent extends Component {
     }catch(e){
       alert("Something went wrong...")
     }
-
   }
 
   submitTimeTracking = async(e:SubmitEvent) =>{
