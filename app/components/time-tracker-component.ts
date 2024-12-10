@@ -61,6 +61,19 @@ export default class TimeTrackerComponent extends Component {
     this.selectedService = "";
   }
 
+  deleteEntry = async(e: MouseEvent) =>{
+    const target = e.target as HTMLElement;
+
+    try{
+      const timeEntry:any =  await this.store.findRecord('time-entry', target.id, { reload: true });
+      
+      timeEntry.destroyRecord() 
+    }catch(e){
+      alert("Something went wrong...")
+    }
+
+  }
+
   submitTimeTracking = async(e:SubmitEvent) =>{
     e.preventDefault();
 

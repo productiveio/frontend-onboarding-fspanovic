@@ -57,6 +57,7 @@
         <div class="time-entry-body">
           <p class="time-entry-element">{{timeEntry.time}} minutes</p>
         <p class="time-entry-note">{{{timeEntry.note}}}</p> </div>
+        <button type="button" id={{timeEntry.id}}  {{on "click"  this.deleteEntry}}>Delete</button>
       </div>
     {{/each}}
   </div>
