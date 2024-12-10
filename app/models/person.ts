@@ -22,5 +22,4 @@ export default class PersonModel extends Model {
   @hasMany('time-entry', {async: false, inverse: 'person'}) timeEntries?: SyncHasMany<TimeEntryModel>;
 
   @hasMany('person', {async: false, inverse: null, includeable: true}) customFieldPeople?: PersonModel;
-
 }

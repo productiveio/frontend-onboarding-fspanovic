@@ -13,6 +13,7 @@
     <div class="form-group">
       <label for="service-dropdown" class="form-label">Choose an Option:</label>
       <select id="service-dropdown" {{on "change" this.setSelectedService}} value={{this.selectedService}}>
+          <option value="" disabled selected hidden>Select a service</option>
         {{#each @services as |service|}}
           <option value={{service.initialServiceId}}>{{service.name}}</option>
         {{/each}}

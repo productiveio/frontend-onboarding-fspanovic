@@ -15,7 +15,6 @@ export default class TimeTrackerComponent extends Component {
 
   @inject("store") declare store:StoreService;
 
-
   setSelectedDate = (e:Event) =>{
     const target = e.target as HTMLSelectElement;
     const currentValue = target.value;
