@@ -1,52 +1,16 @@
 <div class="time-tracker-container">
-  <div class="form-container">
-    <form class="form" {{on "submit" this.submitTimeTracking}} >
-      <div class="form-group">
-        <label for="date-picker">Pick a Date:</label>
-        <input 
-          type="date" 
-          id="date-picker"
-          value={{this.selectedDate}} 
-          {{on "input"  this.setSelectedDate}} 
-        />
-      </div>
-      {{#if this.selectedDate}}
-      <div class="form-group">
-        <label for="service-dropdown" class="form-label">Choose an Option:</label>
-        <select id="service-dropdown" {{on "change" this.setSelectedService}} value={{this.selectedService}}>
-            <option value="" disabled selected hidden>Select a service</option>
-          {{#each @services as |service|}}
-            <option value={{service.initialServiceId}}>{{service.name}}</option>
-          {{/each}}
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="time">Time:</label>
-        <input 
-          id="time"
-          type="number"
-          required
-          value={{this.time}} 
-          {{on "input"  this.setTime}} />
-      </div>
-
-      <div class="form-group">
-        <label for="note">Note:</label>
-        <input 
-          id="note"
-          type="text"
-          value={{this.note}} 
-          required
-          {{on "input"  this.setNote}} />
-      </div>
-
-      <div class="form-group">
-        <button type="submit" class="submit-button">Submit</button>
-      </div>
-      {{/if}}
-    </form>
-  </div>
+  <TimeEntry::TimeEntryFormComponent
+    @submitTimeTracking={{this.submitTimeTracking}}
+    @selectedDate={{this.selectedDate}}
+    @setSelectedDate={{this.setSelectedDate}}
+    @services={{@services}}
+    @note={{this.note}}
+    @selectedService={{this.selectedService}}
+    @setNote={{this.setNote}}
+    @setSelectedService={{this.setSelectedService}}
+    @setTime={{this.setTime}}
+    @time={{this.time}}
+   />
 
   <div class="time-entries-container">
     {{#each this.timeEntries as |timeEntry|}}
