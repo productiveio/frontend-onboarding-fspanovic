@@ -13,7 +13,7 @@ export default class ApplicationRoute extends Route {
     const userId = organizationMembershipResponse[0].user.id;
 
     this.store.query("person", {userId});
-
+    
     return organizationMembershipResponse
   }
  

@@ -1,6 +1,8 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 import type OrganizationMembershipModel from './organization-membership';
+import type PersonModel from './person';
+import type ServiceModel from './service';
 
 
 export default class TimeEntryModel extends Model {
@@ -23,6 +25,11 @@ export default class TimeEntryModel extends Model {
   @attr('boolean') overhead?: boolean;
   @attr('date') lastActivityAt?: Date;
 
+  @attr("string") date?: string;
 
   @belongsTo('organization-membership', {async: false, inverse: null}) organizationMembership?: OrganizationMembershipModel;
+  @belongsTo('person', {async: false, inverse: 'timeEntries'}) person?: PersonModel;
+  @belongsTo('service', {async: false, inverse: null}) service?: ServiceModel;
+
+
 }

@@ -39,30 +39,30 @@ export default class TimeTrackerComponent extends Component {
 
   setSelectedService = (e:Event) =>{
     const target = e.target as HTMLSelectElement;
-
     const currentValue = target.value;
 
     this.selectedService = currentValue;
   }
 
-  submitTimeTracking = (e:SubmitEvent) =>{
+  submitTimeTracking = async(e:SubmitEvent) =>{
     e.preventDefault();
-    // date, service id, person id , noter
 
     const [year, month, day] = this.selectedDate.split("-"); 
+    const formattedDate = `${year}-${month}-${day}`;
 
-    const formattedDate = `${day}-${month}-${year}`;
-    
     try{
-      const timeTracker = this.store.createRecord("time-entry", {
-        date: formattedDate,
-        serviceId: this.selectedService,
-        // personId: ,
+      let timeEntry = this.store.createRecord('time-entry', {
         note: this.note,
-      })
-      
+        date: formattedDate,
+        time: this.time,
+        person: this.store.peekRecord('person', '13532'), 
+        service: this.store.peekRecord('service', this.selectedService), 
+      });  
+
+      timeEntry.save();
+      alert("Time entry added.")
     }catch(e){
-      alert("Something went wrong");
+      alert("something went wrong")
     }
   }
 }

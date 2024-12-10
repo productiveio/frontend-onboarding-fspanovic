@@ -1,4 +1,6 @@
-import Model, {attr} from '@ember-data/model';
+import Model, {attr, hasMany, type SyncHasMany} from '@ember-data/model';
+
+import type TimeEntryModel from './time-entry';
 
 
 export default class PersonModel extends Model {
@@ -15,4 +17,10 @@ export default class PersonModel extends Model {
   @attr('boolean') placeholder?: boolean;
   @attr('boolean') sampleData?: boolean;
   @attr('boolean') twoFactorAuth?: boolean;
+
+
+  @hasMany('time-entry', {async: false, inverse: 'person'}) timeEntries?: SyncHasMany<TimeEntryModel>;
+
+  @hasMany('person', {async: false, inverse: null, includeable: true}) customFieldPeople?: PersonModel;
+
 }
