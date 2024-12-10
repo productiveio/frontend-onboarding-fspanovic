@@ -1,3 +1,5 @@
+import './time-tracker-component.scss'
+
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject, service } from '@ember/service';
