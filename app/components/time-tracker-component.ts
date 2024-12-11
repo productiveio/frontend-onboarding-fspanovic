@@ -67,7 +67,7 @@ export default class TimeTrackerComponent extends Component {
 
   deleteEntry = async(e: MouseEvent) =>{
     const target = e.target as HTMLElement;
-    
+
     this.isLoading = true;
 
     try{
@@ -104,8 +104,8 @@ export default class TimeTrackerComponent extends Component {
 
       await timeEntry.save();
       this.resetFormFields();
-      alert("Time entry added.");
       await this.setTimeEntries()
+      alert("Time entry added.");
     }catch(e){
       alert("something went wrong");
     }finally{
