@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import { inject, service } from '@ember/service';
 
 import type StoreService from '@ember-data/store'
+import type TimeEntryModel from 'frontend-onboarding-template/models/time-entry';
 import type SessionService from 'frontend-onboarding-template/services/session';
 
 export default class TimeTrackerComponent extends Component {
@@ -76,9 +77,9 @@ export default class TimeTrackerComponent extends Component {
     const target = e.target as HTMLElement;
 
     this.isLoading = true;
-
+    
     try{
-      const timeEntry:any =  await this.store.findRecord('time-entry', target.id, { reload: true });
+      const timeEntry:TimeEntryModel =  await this.store.findRecord('time-entry', target.id, { reload: true });
 
       timeEntry.destroyRecord() 
     }catch(e){
