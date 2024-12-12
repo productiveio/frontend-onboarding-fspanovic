@@ -10,16 +10,15 @@ export default class ApplicationRoute extends Route {
     @inject("store") declare store: StoreService;
     @service declare session:SessionService;
 
-
   async model() {
-    const organizationMembershipResponse = await this.store.findAll("organization-membership");
-    
-    return organizationMembershipResponse;
+    const organizationMemberships = await this.store.findAll("organization-membership");
+
+    return organizationMemberships;
   }
  
   setupController(controller, model:OrganizationMembershipModel, transition:Transition) {
       super.setupController(controller, model, transition);
-         
+
       const user = model[0]?.user;
       const person = model[0]?.person
 
