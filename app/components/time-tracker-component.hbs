@@ -1,6 +1,6 @@
 <div class="time-tracker-container">
   {{#if this.isLoading}}
-  <Utils::Loader/>
+    <Utils::Loader/>
   {{/if}}
 
   <TimeEntry::TimeEntryFormComponent
@@ -15,7 +15,7 @@
     @setTime={{this.setTime}}
     @time={{this.time}}
    />
-   
+
   <TimeEntry::TimeEntryCardComponent
     @deleteEntry={{this.deleteEntry}}
     @timeEntries={{this.timeEntries}}
