@@ -2,6 +2,7 @@ import './time-tracker-component.scss'
 
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 import { inject, service } from '@ember/service';
 
 import type StoreService from '@ember-data/store'
@@ -20,7 +21,8 @@ export default class TimeTrackerComponent extends Component {
   @tracked isLoading = false;
   @tracked timeEntries:any = [];
 
-  setSelectedDate = (e:Event) => {
+  @action
+  setSelectedDate(e:Event) {
     const target = e.target as HTMLSelectElement;
     const date = target.value;
 
@@ -28,7 +30,8 @@ export default class TimeTrackerComponent extends Component {
     this.setTimeEntries();
   }
 
-  setTimeEntries = async() => {
+  @action
+  async setTimeEntries() {
     try {
       const timeEntries = await this.store.query("time-entry", 
         {
@@ -45,34 +48,39 @@ export default class TimeTrackerComponent extends Component {
     }
   }
 
-  setTime = (e:Event) => {
+  @action
+  setTime(e:Event) {
     const target = e.target as HTMLInputElement;
     const currentValue = target.value;
 
     this.time = currentValue;
   }
 
-  setNote = (e:Event) => {
+  @action
+  setNote(e:Event) {
     const target = e.target as HTMLInputElement;
     const currentValue = target.value;
 
     this.note = currentValue;
   }
 
-  setSelectedService = (e:Event) => {
+  @action
+  setSelectedService(e:Event) {
     const target = e.target as HTMLSelectElement;
     const currentValue = target.value;
 
     this.selectedService = currentValue;
-  };
-
-  resetFormFields = () => {
+  }
+  
+  @action
+  resetFormFields() {
     this.time = "";
     this.note = "";
     this.selectedService = "";
-  };
+  }
 
-  deleteEntry = async(e: MouseEvent) => {
+  @action
+  async deleteEntry(e: MouseEvent) {
     const target = e.target as HTMLElement;
 
     this.isLoading = true;
@@ -86,9 +94,10 @@ export default class TimeTrackerComponent extends Component {
     } finally {
       this.isLoading = false;
     }
-  };
+  }
 
-  submitTimeTracking = async(e:SubmitEvent) => {
+  @action
+  async submitTimeTracking(e:SubmitEvent) {
     e.preventDefault();
 
     const [year, month, day] = this.selectedDate.split("-"); 
@@ -120,5 +129,5 @@ export default class TimeTrackerComponent extends Component {
     } finally {
       this.isLoading = false;
     }
-  };
+  }
 }
