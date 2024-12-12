@@ -24,7 +24,7 @@ export default class LoginComponent extends Component {
   }
 
   @action
-  async submitLogin(e:SubmitEvent){
+  async submitLogin(e:SubmitEvent) {
     e.preventDefault();
 
     try {
