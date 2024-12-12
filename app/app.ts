@@ -9,6 +9,7 @@ import config from 'frontend-onboarding-template/config/environment';
 Ember.String = EString; // polyfill ember string to fix some deprecations
 
 import './assets/styles/app.scss';
+import './components/utils/loader.scss'
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix;

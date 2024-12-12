@@ -1,21 +1,26 @@
-import Service, { inject } from '@ember/service';
+import {tracked} from '@glimmer/tracking';
+import Service, {inject} from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
+import type PersonModel from 'frontend-onboarding-template/models/person';
+import type UserModel from 'frontend-onboarding-template/models/user';
 
 export default class SessionService extends Service {
   @inject('router') declare router:RouterService;
-
+  @tracked user:UserModel | null  = null;
+  @tracked person: PersonModel | null = null;
+ 
   get token(){
-    return localStorage.getItem("token")
+    return localStorage.getItem('token')
   }
 
    isAuthenticated(){
-   return !!localStorage.getItem("token")
+   return !!localStorage.getItem('token')
   }
 
   logout(){
-    localStorage.removeItem("token");
-    this.router.transitionTo("/login")
+    localStorage.removeItem('token');
+    this.router.transitionTo('login')
   }
 }
 

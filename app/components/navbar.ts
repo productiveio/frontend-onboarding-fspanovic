@@ -1,6 +1,8 @@
 import Component from '@glimmer/component';
+import {service} from '@ember/service';
+
 import styles from './navbar.module.scss';
-import { service } from '@ember/service';
+
 import type SessionService from 'frontend-onboarding-template/services/session';
 
 export default class NavbarComponent extends Component {

@@ -10,5 +10,7 @@ export default class Router extends EmberRouter {
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 Router.map(function () {
   this.route('login');
-  this.route('authenticated', {path: ""});
+  this.route('authenticated', {path: ""}, function() {
+    this.route('time-tracker');
+  });
 });
