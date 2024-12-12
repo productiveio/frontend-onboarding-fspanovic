@@ -3,9 +3,7 @@ import JSONAPIAdapter from '@ember-data/adapter/json-api';
 
 import { pluralize } from 'ember-inflector';
 
-
 export default class ApplicationAdapter extends JSONAPIAdapter {
-
     namespace = "api/v2";
     host = "https://api-staging.productive.io";
 
