@@ -2,10 +2,8 @@ import Model, {attr} from '@ember-data/model';
 
 import type Currency from 'frontend-onboarding-template/consts/currency';
 
-
 export default class ServiceModel extends Model {
   @attr('string') name?: string;
-
   @attr('string') currency?: Currency;
   @attr('string') currencyDefault?: Currency;
   @attr('string') currencyNormalized?: Currency;
