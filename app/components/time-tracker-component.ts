@@ -96,7 +96,9 @@ export default class TimeTrackerComponent extends Component {
 
     const personId = this.session.person?.id;
 
-    if(!personId)return
+    if(!personId){
+      return;
+    }
 
     this.isLoading = true;
 
@@ -111,7 +113,7 @@ export default class TimeTrackerComponent extends Component {
 
       await timeEntry.save();
       this.resetFormFields();
-      await this.setTimeEntries()
+      await this.setTimeEntries();
       alert("Time entry added.");
     } catch (e) {
       alert("something went wrong");
