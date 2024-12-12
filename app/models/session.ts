@@ -8,5 +8,5 @@ export default class SessionModel extends Model {
   @attr("string") email?: string;
   @attr("string") password?: string;
 
-  @belongsTo("user", {async: false, inverse: null}) user?:UserModel;
+  @belongsTo("user", {async: false, inverse: null}) user?: UserModel;
 }
