@@ -10,7 +10,6 @@ export default class PersonModel extends Model {
   @attr('string') title?: string;
   @attr('string') colorId?: string;
   @attr('string') userId?: string;
-
   @attr('boolean') autotracking?: boolean;
   @attr('boolean') placeholder?: boolean;
   @attr('boolean') sampleData?: boolean;
