@@ -19,7 +19,6 @@ export default class TimeTrackerComponent extends Component {
 
   @inject("store") declare store:StoreService;
 
-  
   setSelectedDate = (e:Event) =>{
     const target = e.target as HTMLSelectElement;
     const date = target.value;
@@ -29,11 +28,18 @@ export default class TimeTrackerComponent extends Component {
   }
 
   setTimeEntries = async() =>{
-    try{
-      const timeEntries = await this.store.query("time-entry", {filter:{before: this.selectedDate, after: this.selectedDate}, personId: this.session.person?.id});
+    try {
+      const timeEntries = await this.store.query("time-entry", 
+        {
+          filter: {
+            before: this.selectedDate, 
+            after: this.selectedDate,
+        }, 
+        personId: this.session.person?.id,
+      });
 
       this.timeEntries = timeEntries;
-    }catch(e){
+    } catch(e) {
       alert("Something went wrong...")
     }
   }
@@ -93,7 +99,7 @@ export default class TimeTrackerComponent extends Component {
 
     this.isLoading = true;
 
-    try{
+    try {
       let timeEntry = this.store.createRecord('time-entry', {
         note: this.note,
         date: formattedDate,
@@ -106,9 +112,9 @@ export default class TimeTrackerComponent extends Component {
       this.resetFormFields();
       await this.setTimeEntries()
       alert("Time entry added.");
-    }catch(e){
+    } catch (e) {
       alert("something went wrong");
-    }finally{
+    } finally {
       this.isLoading = false;
     }
   }
