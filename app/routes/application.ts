@@ -7,11 +7,11 @@ import type OrganizationMembershipModel from 'frontend-onboarding-template/model
 import type SessionService from 'frontend-onboarding-template/services/session';
 
 export default class ApplicationRoute extends Route {
-    @inject("store") declare store: StoreService;
+    @inject('store') declare store: StoreService;
     @service declare session:SessionService;
 
   async model() {
-    const organizationMemberships = await this.store.findAll("organization-membership");
+    const organizationMemberships = await this.store.findAll('organization-membership');
 
     return organizationMemberships[0];
   }

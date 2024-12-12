@@ -5,10 +5,10 @@ import type SessionModel from './session';
 
 export default class UserModel extends Model {
   @attr('string') firstName?: string;
-  @attr("string") lastName?: string;
-  @attr("string") email?: string;
-  @attr("number") defaultOrganizationId?: number;
+  @attr('string') lastName?: string;
+  @attr('string') email?: string;
+  @attr('string') defaultOrganizationId?: number;
 
-  @hasMany("session", {async: false, inverse: null}) sessions?: SessionModel;
+  @hasMany('string', {async: false, inverse: null}) sessions?: SessionModel;
   @hasMany('organization-membership', {async: false, inverse: 'user'}) organizationMemberships?: SyncHasMany<OrganizationMembershipModel>;
 }

@@ -10,7 +10,7 @@ import type StoreService from '@ember-data/store'
 import type SessionModel from 'frontend-onboarding-template/models/session';
 
 export default class LoginComponent extends Component {
-  @inject("store") declare store:StoreService;
+  @inject('store') declare store:StoreService;
   @inject('router') declare router:RouterService;
 
   @tracked email= "";
@@ -28,13 +28,13 @@ export default class LoginComponent extends Component {
     e.preventDefault();
 
     try {
-      const session = await this.store.createRecord("session", {email:this.email, password:this.password});
+      const session = await this.store.createRecord('session', {email:this.email, password:this.password});
       const response:SessionModel = await session.save();
 
-      localStorage.setItem("token", response?.token as string);
-      this.router.transitionTo("/");
+      localStorage.setItem('token', response?.token as string);
+      this.router.transitionTo('/');
     } catch(e) {
-      alert("Something went wrong");
+      alert('Something went wrong.');
     }
   }
 }

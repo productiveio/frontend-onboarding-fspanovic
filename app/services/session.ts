@@ -11,18 +11,17 @@ export default class SessionService extends Service {
   @tracked person: PersonModel | null = null;
  
   get token(){
-    return localStorage.getItem("token")
+    return localStorage.getItem('token')
   }
 
    isAuthenticated(){
-   return !!localStorage.getItem("token")
+   return !!localStorage.getItem('token')
   }
 
   logout(){
-    localStorage.removeItem("token");
-    this.router.transitionTo("/login")
+    localStorage.removeItem('token');
+    this.router.transitionTo('login')
   }
-
 }
 
 // Don't remove this declaration: this is what enables TypeScript to resolve

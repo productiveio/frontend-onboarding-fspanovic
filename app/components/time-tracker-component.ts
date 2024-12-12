@@ -12,7 +12,7 @@ import type SessionService from 'frontend-onboarding-template/services/session';
 export default class TimeTrackerComponent extends Component {
   @service declare session:SessionService;
 
-  @inject("store") declare store:StoreService;
+  @inject('store') declare store:StoreService;
 
   @tracked selectedDate = "";
   @tracked time = "";
@@ -33,7 +33,7 @@ export default class TimeTrackerComponent extends Component {
   @action
   async setTimeEntries() {
     try {
-      const timeEntries = await this.store.query("time-entry", 
+      const timeEntries = await this.store.query('time-entry', 
         {
           filter: {
             before: this.selectedDate, 
@@ -44,7 +44,7 @@ export default class TimeTrackerComponent extends Component {
 
       this.timeEntries = timeEntries;
     } catch (e) {
-      alert("Something went wrong...")
+      alert('Something went wrong...')
     }
   }
 
@@ -90,7 +90,7 @@ export default class TimeTrackerComponent extends Component {
 
       timeEntry.destroyRecord() 
     } catch (e) {
-      alert("Something went wrong...")
+      alert('Something went wrong...')
     } finally {
       this.isLoading = false;
     }
@@ -123,9 +123,9 @@ export default class TimeTrackerComponent extends Component {
       await timeEntry.save();
       this.resetFormFields();
       await this.setTimeEntries();
-      alert("Time entry added.");
+      alert('Time entry added.');
     } catch (e) {
-      alert("something went wrong");
+      alert('Something went wrong');
     } finally {
       this.isLoading = false;
     }
