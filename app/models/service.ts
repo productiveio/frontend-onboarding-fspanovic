@@ -7,7 +7,6 @@ export default class ServiceModel extends Model {
   @attr('string') currency?: Currency;
   @attr('string') currencyDefault?: Currency;
   @attr('string') currencyNormalized?: Currency;
-
   @attr('number') price?: number;
   @attr('number') priceDefault?: number;
   @attr('number') priceNormalized?: number;
