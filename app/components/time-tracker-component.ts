@@ -77,13 +77,13 @@ export default class TimeTrackerComponent extends Component {
 
     this.isLoading = true;
 
-    try{
+    try {
       const timeEntry:TimeEntryModel =  await this.store.findRecord('time-entry', target.id, { reload: true });
 
       timeEntry.destroyRecord() 
-    }catch(e){
+    } catch (e) {
       alert("Something went wrong...")
-    }finally{
+    } finally {
       this.isLoading = false;
     }
   };
@@ -96,7 +96,7 @@ export default class TimeTrackerComponent extends Component {
 
     const personId = this.session.person?.id;
 
-    if(!personId){
+    if (!personId) {
       return;
     }
 
