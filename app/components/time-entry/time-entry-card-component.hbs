@@ -6,7 +6,7 @@
       </div>
       <div class="time-entry-body">
         <p class="time-entry-element">{{timeEntry.time}} minutes</p>
-        <p class="time-entry-note">{{{timeEntry.note}}}</p>
+        <p class="time-entry-note">{{safe-html timeEntry.note}}</p>
       </div>
       <button
         type="button"
