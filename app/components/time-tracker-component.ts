@@ -20,7 +20,6 @@ export default class TimeTrackerComponent extends Component {
   @tracked isLoading = false;
   @tracked timeEntries:any = [];
 
-
   setSelectedDate = (e:Event) => {
     const target = e.target as HTMLSelectElement;
     const date = target.value;
@@ -77,7 +76,7 @@ export default class TimeTrackerComponent extends Component {
     const target = e.target as HTMLElement;
 
     this.isLoading = true;
-    
+
     try{
       const timeEntry:TimeEntryModel =  await this.store.findRecord('time-entry', target.id, { reload: true });
 
