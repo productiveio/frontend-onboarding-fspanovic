@@ -1,5 +1,5 @@
 enum Currency {
-    EUR = 'EUR',
-  }
+  EUR = 'EUR',
+}
   
-  export default Currency;
+export default Currency;
