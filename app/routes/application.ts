@@ -17,16 +17,16 @@ export default class ApplicationRoute extends Route {
   }
  
   setupController(controller, model:OrganizationMembershipModel, transition:Transition) {
-      super.setupController(controller, model, transition);
+    super.setupController(controller, model, transition);
 
-      const user = model.user;
-      const person = model.person
+    const user = model.user; 
+    const person = model.person
 
-      if(!user || !person){
-        return;
-      }
+    if(!user || !person){
+      return;
+    }
 
-      this.session.user = user;
-      this.session.person = person;
+    this.session.user = user;
+    this.session.person = person;
   } 
 }
