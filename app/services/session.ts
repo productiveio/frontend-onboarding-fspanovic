@@ -1,5 +1,5 @@
-import { tracked } from '@glimmer/tracking';
-import Service, { inject } from '@ember/service';
+import {tracked} from '@glimmer/tracking';
+import Service, {inject} from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
 import type PersonModel from 'frontend-onboarding-template/models/person';

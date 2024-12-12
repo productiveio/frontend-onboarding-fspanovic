@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject, service } from '@ember/service';
+import {inject, service} from '@ember/service';
 
 import type Transition from '@ember/routing/transition';
 import type StoreService from '@ember-data/store'

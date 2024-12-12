@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { service } from '@ember/service';
+import {service} from '@ember/service';
 
 import styles from './navbar.module.scss';
 

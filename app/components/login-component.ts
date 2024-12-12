@@ -1,9 +1,9 @@
 import './login-component.scss'
 
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
-import { inject } from '@ember/service';
+import {tracked} from '@glimmer/tracking';
+import {action} from '@ember/object';
+import {inject} from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
 import type StoreService from '@ember-data/store'

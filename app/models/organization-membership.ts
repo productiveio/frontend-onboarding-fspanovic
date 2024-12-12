@@ -3,7 +3,6 @@ import Model, {attr, belongsTo} from '@ember-data/model';
 import type PersonModel from './person';
 import type UserModel from './user';
 
-
 export default class OrganizationMembershipModel extends Model {
   @attr('string') updatedAt?: string;
   

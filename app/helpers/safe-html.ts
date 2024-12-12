@@ -1,5 +1,5 @@
-import { helper } from '@ember/component/helper';
-import { htmlSafe, type SafeString } from '@ember/template';
+import {helper} from '@ember/component/helper';
+import {htmlSafe, type SafeString} from '@ember/template';
 
 interface SafeHtmlSignature {
   Args: {

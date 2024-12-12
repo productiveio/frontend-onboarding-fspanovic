@@ -1,9 +1,9 @@
 import './time-tracker-component.scss'
 
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
-import { inject, service } from '@ember/service';
+import {tracked} from '@glimmer/tracking';
+import {action} from '@ember/object';
+import {inject, service} from '@ember/service';
 
 import type StoreService from '@ember-data/store'
 import type TimeEntryModel from 'frontend-onboarding-template/models/time-entry';

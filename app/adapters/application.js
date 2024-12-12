@@ -1,7 +1,7 @@
-import { underscore } from '@ember/string';
+import {underscore} from '@ember/string';
 import JSONAPIAdapter from '@ember-data/adapter/json-api';
 
-import { pluralize } from 'ember-inflector';
+import {pluralize} from 'ember-inflector';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
     namespace = "api/v2";

@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject, service } from '@ember/service';
+import {inject, service} from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
 import type SessionService from 'frontend-onboarding-template/services/session';

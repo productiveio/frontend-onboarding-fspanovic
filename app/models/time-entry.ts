@@ -1,4 +1,4 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, {attr, belongsTo} from '@ember-data/model';
 
 import type OrganizationMembershipModel from './organization-membership';
 import type PersonModel from './person';
