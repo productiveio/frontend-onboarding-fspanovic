@@ -13,14 +13,18 @@ export default class ApplicationRoute extends Route {
   async model() {
     const organizationMemberships = await this.store.findAll("organization-membership");
 
-    return organizationMemberships;
+    return organizationMemberships[0];
   }
  
   setupController(controller, model:OrganizationMembershipModel, transition:Transition) {
       super.setupController(controller, model, transition);
 
-      const user = model[0]?.user;
-      const person = model[0]?.person
+      const user = model.user;
+      const person = model.person
+
+      if(!user || !person){
+        return;
+      }
 
       this.session.user = user;
       this.session.person = person;
