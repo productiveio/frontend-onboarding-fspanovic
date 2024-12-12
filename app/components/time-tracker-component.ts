@@ -25,7 +25,7 @@ export default class TimeTrackerComponent extends Component {
     const date = target.value;
 
     this.selectedDate = date;
-    this.setTimeEntries()
+    this.setTimeEntries();
   }
 
   setTimeEntries = async() => {
@@ -40,7 +40,7 @@ export default class TimeTrackerComponent extends Component {
       });
 
       this.timeEntries = timeEntries;
-    } catch(e) {
+    } catch (e) {
       alert("Something went wrong...")
     }
   }
