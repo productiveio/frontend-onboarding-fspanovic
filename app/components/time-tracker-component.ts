@@ -8,6 +8,10 @@ import type StoreService from '@ember-data/store'
 import type SessionService from 'frontend-onboarding-template/services/session';
 
 export default class TimeTrackerComponent extends Component {
+  @service declare session:SessionService;
+
+  @inject("store") declare store:StoreService;
+
   @tracked selectedDate = "";
   @tracked time = "";
   @tracked note = "";
@@ -15,11 +19,8 @@ export default class TimeTrackerComponent extends Component {
   @tracked isLoading = false;
   @tracked timeEntries:any = [];
 
-  @service declare session:SessionService;
 
-  @inject("store") declare store:StoreService;
-
-  setSelectedDate = (e:Event) =>{
+  setSelectedDate = (e:Event) => {
     const target = e.target as HTMLSelectElement;
     const date = target.value;
 
@@ -27,7 +28,7 @@ export default class TimeTrackerComponent extends Component {
     this.setTimeEntries()
   }
 
-  setTimeEntries = async() =>{
+  setTimeEntries = async() => {
     try {
       const timeEntries = await this.store.query("time-entry", 
         {
@@ -44,7 +45,7 @@ export default class TimeTrackerComponent extends Component {
     }
   }
 
-  setTime = (e:Event) =>{
+  setTime = (e:Event) => {
     const target = e.target as HTMLInputElement;
     const currentValue = target.value;
 
@@ -58,36 +59,36 @@ export default class TimeTrackerComponent extends Component {
     this.note = currentValue;
   }
 
-  setSelectedService = (e:Event) =>{
+  setSelectedService = (e:Event) => {
     const target = e.target as HTMLSelectElement;
     const currentValue = target.value;
 
     this.selectedService = currentValue;
   };
 
-  resetFormFields = () =>{
+  resetFormFields = () => {
     this.time = "";
     this.note = "";
     this.selectedService = "";
-  }
+  };
 
-  deleteEntry = async(e: MouseEvent) =>{
+  deleteEntry = async(e: MouseEvent) => {
     const target = e.target as HTMLElement;
 
     this.isLoading = true;
 
     try{
       const timeEntry:any =  await this.store.findRecord('time-entry', target.id, { reload: true });
-      
+
       timeEntry.destroyRecord() 
     }catch(e){
       alert("Something went wrong...")
     }finally{
       this.isLoading = false;
     }
-  }
+  };
 
-  submitTimeTracking = async(e:SubmitEvent) =>{
+  submitTimeTracking = async(e:SubmitEvent) => {
     e.preventDefault();
 
     const [year, month, day] = this.selectedDate.split("-"); 
@@ -117,5 +118,5 @@ export default class TimeTrackerComponent extends Component {
     } finally {
       this.isLoading = false;
     }
-  }
+  };
 }
