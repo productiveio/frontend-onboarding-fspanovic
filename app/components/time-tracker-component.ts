@@ -116,7 +116,7 @@ export default class TimeTrackerComponent extends Component {
         note: this.note,
         date: formattedDate,
         time: this.time,
-        person: this.store.peekRecord('person', personId), 
+        person: this.session.person, 
         service: this.store.peekRecord('service', this.selectedService), 
       });  
     
