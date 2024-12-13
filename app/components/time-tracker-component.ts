@@ -119,7 +119,7 @@ export default class TimeTrackerComponent extends Component {
         person: this.store.peekRecord('person', personId), 
         service: this.store.peekRecord('service', this.selectedService), 
       });  
-
+    
       await timeEntry.save();
       this.resetFormFields();
       await this.setTimeEntries();
