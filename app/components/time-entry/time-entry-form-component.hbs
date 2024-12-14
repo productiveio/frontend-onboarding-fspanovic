@@ -1,66 +1,66 @@
-  <div class="form-container">
-    <form class="form" {{on "submit" @submitTimeTracking}}>
-      <div class="form-group">
-        <label for="date-picker">Pick a Date:</label>
+<div class="form-container">
+  <form class="form" {{on "submit" this.submitTimeTracking}}>
+    <div class="form-group">
+      <label for="date-picker">Pick a Date:</label>
         <input 
           type="date" 
           id="date-picker"
           value={{@selectedDate}} 
           {{on "input" @setSelectedDate}} 
         />
-      </div>
-      {{#if @selectedDate}}
-        <div class="form-group">
-          <label for="service-dropdown" class="form-label">Choose an Option:</label>
-            <select 
-              required 
-              id="service-dropdown" 
-              value={{@selectedService}}
-              {{on "change" @setSelectedService}} 
+    </div>
+    {{#if @selectedDate}}
+      <div class="form-group">
+        <label for="service-dropdown" class="form-label">Choose an Option:</label>
+          <select 
+            required 
+            id="service-dropdown" 
+            value={{this.selectedService}}
+            {{on "change" this.setSelectedService}} 
+          >
+            <option
+              value="" 
+              disabled 
+              selected 
+              hidden
             >
-              <option
-                value="" 
-                disabled 
-                selected 
-                hidden
-              >
-                Select a service
-              </option>
+              Select a service
+            </option>
             {{#each @services as |service|}}
               <option value={{service.initialServiceId}}>
                 {{service.name}}
-              </option>
+                </option>
             {{/each}}
           </select>
-        </div>
-        <div class="form-group">
-          <label for="time">Time:</label>
-          <input 
-            id="time"
-            type="number"
-            required
-            value={{@time}} 
-            {{on "input" @setTime}} 
-          />
-        </div>
-        <div class="form-group">
-          <label for="note">Note:</label>
+      </div>
+      <div class="form-group">
+        <label for="time">Time:</label>
+        <input 
+          id="time"
+          type="number"
+          required
+          value={{this.time}} 
+          {{on "input" this.setTime}} 
+        />
+      </div>
+      <div class="form-group">
+        <label for="note">Note:</label>
           <input 
             id="note"
             type="text"
-            value={{@note}} 
+            value={{this.note}} 
             required
-            {{on "input" @setNote}}
+            {{on "input" this.setNote}}
           />
-        </div>
-        <div class="form-group">
-          <button 
-            type="submit" 
-            class="submit-button"
-          >
-            Submit
-          </button>
-        </div>
-      {{/if}}
-    </form>
-  </div>
+      </div>
+      <div class="form-group">
+        <button 
+          type="submit" 
+          class="submit-button"
+        >
+          Submit
+        </button>
+      </div>
+    {{/if}}
+  </form>
+</div>
