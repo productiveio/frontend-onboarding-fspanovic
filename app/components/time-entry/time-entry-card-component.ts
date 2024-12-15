@@ -19,11 +19,11 @@ export default class TimeEntryCardComponent extends Component<TimeTrackerCardCom
         this.args.setIsLoading(true);
         
         try {
-            const timeEntry:TimeEntryModel =  await this.store.findRecord('time-entry', target.id, { reload: true });
+            const timeEntry:TimeEntryModel =  await this.store.peekRecord('time-entry', target.id);
 
-            timeEntry.destroyRecord() 
+            timeEntry.destroyRecord();
         } catch (e) {
-            alert('Something went wrong...')
+            alert('Something went wrong...');
         } finally {
             this.args.setIsLoading(false);
         }
