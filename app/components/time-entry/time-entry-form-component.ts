@@ -11,7 +11,6 @@ interface TimeTrackerFormArgs {
   setIsLoading: (value: boolean) => void;
   selectedDate: string;
   setSelectedDate: (e: Event) => void;
-  services: any;
 }
 
 export default class TimeEntryFormComponent extends Component<TimeTrackerFormArgs> {
@@ -63,7 +62,7 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
     try{
       this.services = await this.store.findAll('service');
     }catch(e){
-      alert("Failed to load services.")
+      alert("Failed to load services.");
     }
   }
 
@@ -73,7 +72,7 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
   
     const [year, month, day] = this.args.selectedDate.split('-'); 
     const formattedDate = `${year}-${month}-${day}`;
-  
+    
     const personId = this.session.person?.id;
   
     if (!personId) {
@@ -81,21 +80,22 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
     }
   
     this.args.setIsLoading(true);
-  
+
+    let timeEntry = this.store.createRecord('time-entry', {
+      note: this.note,
+      date: formattedDate,
+      time: this.time,
+      person: this.session.person, 
+      service: this.store.peekRecord('service', this.selectedService), 
+    });
+
     try {
-      let timeEntry = this.store.createRecord('time-entry', {
-        note: this.note,
-        date: formattedDate,
-        time: this.time,
-        person: this.session.person, 
-        service: this.store.peekRecord('service', this.selectedService), 
-      });  
-      
       await timeEntry.save();
       this.resetFormFields();
       alert('Time entry added.');
     } catch(e) {
         alert('Something went wrong');
+        timeEntry.unload();
     } finally {
         this.args.setIsLoading(false);
     }
