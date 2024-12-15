@@ -1,7 +1,7 @@
 import Component from "@glimmer/component";
-import { tracked } from "@glimmer/tracking";
-import { action } from "@ember/object";
-import { inject, service } from "@ember/service";
+import {tracked} from "@glimmer/tracking";
+import {action} from "@ember/object";
+import {service} from "@ember/service";
 
 import type StoreService from '@ember-data/store'
 import type SessionService from "frontend-onboarding-template/services/session";
@@ -12,12 +12,11 @@ interface TimeTrackerFormArgs {
   selectedDate: string;
   setSelectedDate: (e: Event) => void;
   services: any;
-  setTimeEntries: any;
 }
 
 export default class TimeEntryFormComponent extends Component<TimeTrackerFormArgs> {
   @service declare session:SessionService;
-  @inject('store') declare store:StoreService;
+  @service declare store:StoreService;
   
   @tracked time = '';
   @tracked note = '';
@@ -67,7 +66,7 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
       return;
     }
   
-    this.args.setIsLoading(true)
+    this.args.setIsLoading(true);
   
     try {
       let timeEntry = this.store.createRecord('time-entry', {
@@ -80,7 +79,6 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
       
       await timeEntry.save();
       this.resetFormFields();
-      await this.args.setTimeEntries();
       alert('Time entry added.');
     } catch(e) {
         alert('Something went wrong');

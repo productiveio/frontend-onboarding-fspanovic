@@ -15,7 +15,7 @@ export default class NavbarComponent extends Component {
   }
 
   handleLogout = () =>{
-    this.session.logout()
+    this.session.logout();
   }
 }
 
