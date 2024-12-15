@@ -20,7 +20,7 @@ export default class TimeEntryCardComponent extends Component<TimeTrackerCardCom
         
         try {
             const timeEntry:TimeEntryModel =  this.store.peekRecord('time-entry', target.id);
-
+            
             await timeEntry.destroyRecord();
         } catch(e) {
             alert('Something went wrong...');

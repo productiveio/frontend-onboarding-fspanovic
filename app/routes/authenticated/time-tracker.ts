@@ -1,7 +1,7 @@
 import '../../components/time-tracker-component.scss'
 
-import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
+import {tracked} from '@glimmer/tracking';
+import {action} from '@ember/object';
 import Route from '@ember/routing/route';
 import {inject, service} from '@ember/service';
 
