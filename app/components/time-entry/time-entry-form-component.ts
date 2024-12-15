@@ -11,16 +11,17 @@ interface TimeTrackerFormArgs {
   setIsLoading: (value: boolean) => void;
   selectedDate: string;
   setSelectedDate: (e: Event) => void;
+  session: SessionService;
 }
 
 export default class TimeEntryFormComponent extends Component<TimeTrackerFormArgs> {
-  @service declare session:SessionService;
   @service declare store:StoreService;
   
   @tracked time = '';
   @tracked note = '';
   @tracked services:any = [];
   @tracked selectedService = '';
+  @tracked isServicesLoading = false;
 
   @action
   setTime(e:Event) {
@@ -59,10 +60,14 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
       return;
     }
 
+    this.isServicesLoading = true;
+
     try{
       this.services = await this.store.findAll('service');
     }catch(e){
       alert("Failed to load services.");
+    }finally{
+      this.isServicesLoading = false;
     }
   }
 
@@ -73,7 +78,7 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
     const [year, month, day] = this.args.selectedDate.split('-'); 
     const formattedDate = `${year}-${month}-${day}`;
     
-    const personId = this.session.person?.id;
+    const personId = this.args.session.person?.id;
   
     if (!personId) {
       return;
@@ -85,7 +90,7 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
       note: this.note,
       date: formattedDate,
       time: this.time,
-      person: this.session.person, 
+      person: this.args.session.person, 
       service: this.store.peekRecord('service', this.selectedService), 
     });
 
