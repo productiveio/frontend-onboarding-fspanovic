@@ -20,6 +20,7 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
   
   @tracked time = '';
   @tracked note = '';
+  @tracked services:any = [];
   @tracked selectedService = '';
 
   @action
@@ -51,6 +52,19 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
     this.time = '';
     this.note = '';
     this.selectedService = '';
+  }
+
+  @action
+  async loadServices() {
+    if(this.services.length > 0){
+      return;
+    }
+
+    try{
+      this.services = await this.store.findAll('service');
+    }catch(e){
+      alert("Failed to load services.")
+    }
   }
 
   @action

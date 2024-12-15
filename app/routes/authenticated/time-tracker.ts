@@ -37,15 +37,10 @@ export default class AuthenticatedTimeTrackerRoute extends Route {
         after: date,
       },
     });
-
-    const services = await this.store.findAll('service');
-
-    return {services};
   }
 
   get timeEntries() {
     const params = this.router.currentRoute.queryParams;
-
     const date = params.date;
 
     return this.store.peekAll('time-entry').slice().filter((entry) => {

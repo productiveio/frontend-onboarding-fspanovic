@@ -17,6 +17,7 @@
             id="service-dropdown" 
             value={{this.selectedService}}
             {{on "change" this.setSelectedService}} 
+            {{on "focus" this.loadServices}}
           >
             <option
               value="" 
@@ -26,7 +27,7 @@
             >
               Select a service
             </option>
-            {{#each @services as |service|}}
+            {{#each this.services as |service|}}
               <option value={{service.initialServiceId}}>
                 {{service.name}}
                 </option>
