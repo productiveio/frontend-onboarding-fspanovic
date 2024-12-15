@@ -1,6 +1,6 @@
 import Component from "@glimmer/component";
-import { action } from "@ember/object";
-import { inject } from "@ember/service";
+import {action} from "@ember/object";
+import {inject} from "@ember/service";
 
 import type StoreService from '@ember-data/store'
 import type TimeEntryModel from "frontend-onboarding-template/models/time-entry";
@@ -19,10 +19,10 @@ export default class TimeEntryCardComponent extends Component<TimeTrackerCardCom
         this.args.setIsLoading(true);
         
         try {
-            const timeEntry:TimeEntryModel =  await this.store.peekRecord('time-entry', target.id);
+            const timeEntry:TimeEntryModel =  this.store.peekRecord('time-entry', target.id);
 
-            timeEntry.destroyRecord();
-        } catch (e) {
+            await timeEntry.destroyRecord();
+        } catch(e) {
             alert('Something went wrong...');
         } finally {
             this.args.setIsLoading(false);

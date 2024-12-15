@@ -64,9 +64,9 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
 
     try{
       this.services = await this.store.findAll('service');
-    }catch(e){
+    } catch(e) {
       alert("Failed to load services.");
-    }finally{
+    } finally {
       this.isServicesLoading = false;
     }
   }
