@@ -13,8 +13,8 @@ export default class LoginComponent extends Component {
   @inject('store') declare store:StoreService;
   @inject('router') declare router:RouterService;
 
-  @tracked email= "";
-  @tracked password= "";
+  @tracked email = '';
+  @tracked password = '';
   
   @action
   onInputChange(event:Event){
