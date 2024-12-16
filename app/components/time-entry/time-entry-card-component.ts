@@ -13,14 +13,10 @@ export default class TimeEntryCardComponent extends Component<TimeTrackerCardCom
     @inject('store') declare store: StoreService;
 
     @action
-    async deleteEntry(e: MouseEvent) {
-        const target = e.target as HTMLElement;
-
+    async deleteEntry(timeEntry: TimeEntryModel) {
         this.args.setIsLoading(true);
         
         try {
-            const timeEntry:TimeEntryModel =  this.store.peekRecord('time-entry', target.id);
-            
             await timeEntry.destroyRecord();
         } catch(e) {
             alert('Something went wrong...');

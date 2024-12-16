@@ -11,7 +11,7 @@
       <button
         type="button"
         id={{timeEntry.id}}  
-        {{on "click" this.deleteEntry}}
+        {{on "click" (fn this.deleteEntry timeEntry)}}
       >
         Delete
       </button>
