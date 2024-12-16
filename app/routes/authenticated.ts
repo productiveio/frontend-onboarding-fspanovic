@@ -31,7 +31,7 @@ export default class AuthenticatedRoute extends Route {
         const person = model.person
 
         if(!user || !person){
-        return;
+            return;
         }
 
         this.session.user = user;

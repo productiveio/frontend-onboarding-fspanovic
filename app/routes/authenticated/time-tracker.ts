@@ -1,4 +1,4 @@
-import '../../components/time-tracker-component.scss'
+import '../../components/time-tracker.scss'
 
 import {tracked} from '@glimmer/tracking';
 import {action} from '@ember/object';
