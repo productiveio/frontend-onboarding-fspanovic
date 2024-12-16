@@ -32,7 +32,7 @@ export default class AuthenticatedTimeTrackerRoute extends Route {
       return;
     }
 
-    this.store.query('time-entry',  {
+    return this.store.query('time-entry',  {
       filter: {
         before: date, 
         after: date,
