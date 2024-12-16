@@ -10,6 +10,7 @@ import type RouterService from '@ember/routing/router-service';
 import type Transition from '@ember/routing/transition';
 import type StoreService from '@ember-data/store'
 import type SessionService from 'frontend-onboarding-template/services/session';
+import type TimeEntryModel from 'frontend-onboarding-template/models/time-entry';
 
 export default class AuthenticatedTimeTrackerRoute extends Route {
   queryParams = {
@@ -52,7 +53,7 @@ export default class AuthenticatedTimeTrackerRoute extends Route {
     return this.router.currentRoute.queryParams.date || '';
   }
 
-  setupController(controller: Controller, model: any, transition: Transition): void {
+  setupController(controller: Controller, model: TimeEntryModel, transition: Transition): void {
     super.setupController(controller, model, transition);
 
     controller.set('route', this);
