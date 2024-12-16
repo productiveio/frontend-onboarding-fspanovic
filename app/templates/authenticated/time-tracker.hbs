@@ -1,0 +1,18 @@
+<div class="time-tracker-container">
+  {{#if this.route.isLoading}}
+    <Utils::Loader/>
+  {{/if}}
+
+  <TimeEntry::TimeEntryFormComponent
+    @isLoading={{this.route.isLoading}}
+    @setIsLoading={{this.route.setIsLoading}}  
+    @selectedDate={{this.route.selectedDate}}
+    @setSelectedDate={{this.route.setSelectedDate}}
+    @session={{this.route.session}}
+  />
+
+  <TimeEntry::TimeEntryCardComponent
+    @timeEntries={{this.route.timeEntries}}
+    @setIsLoading={{this.route.setIsLoading}}     
+  />
+</div>

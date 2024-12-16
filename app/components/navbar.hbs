@@ -19,15 +19,14 @@
       <div class="navbar-nav">
         <LinkTo
           class="nav-link {{styles this 'bold' red=this.isRed}}"
-          @route="application"
+          @route="authenticated.time-tracker"
         >
-          Home
+          Time tracker
         </LinkTo>
         <button {{on "click" this.handleLogout}} class="logout-btn" type="button"> 
           Logout
         </button>
         {{! Use the template below for links }}
-        {{! <LinkTo class="nav-link" @route="your.route">Your route</LinkTo> }}
       </div>
     </div>
   </div>

@@ -1,0 +1,20 @@
+<div class="time-entries-container">
+  {{#each @timeEntries as |timeEntry|}}
+    <div class="time-entry-card">
+      <div class="time-entry-header">
+        <span class="time-entry-title">{{timeEntry.service.name}}</span>
+      </div>
+      <div class="time-entry-body">
+        <p class="time-entry-element">{{timeEntry.time}} minutes</p>
+        <p class="time-entry-note">{{safe-html timeEntry.note}}</p>
+      </div>
+      <button
+        type="button"
+        id={{timeEntry.id}}  
+        {{on "click" (fn this.deleteEntry timeEntry)}}
+      >
+        Delete
+      </button>
+    </div>
+  {{/each}}
+</div>
