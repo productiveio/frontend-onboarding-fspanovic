@@ -3,7 +3,7 @@ import {tracked} from "@glimmer/tracking";
 import {action} from "@ember/object";
 import {service} from "@ember/service";
 
-import type StoreService from '@ember-data/store'
+import type StoreService from '@ember-data/store';
 import type SessionService from "frontend-onboarding-template/services/session";
 
 interface TimeTrackerFormArgs {
