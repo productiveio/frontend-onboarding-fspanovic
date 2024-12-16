@@ -100,7 +100,7 @@ export default class TimeEntryFormComponent extends Component<TimeTrackerFormArg
       alert('Time entry added.');
     } catch(e) {
         alert('Something went wrong');
-        timeEntry.unload();
+        timeEntry.unloadRecord();
     } finally {
         this.args.setIsLoading(false);
     }
